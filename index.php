@@ -22,7 +22,11 @@
         var dropzone = $("#dropzoneForm").get(0).dropzone;
 
         dropzone.on("success", function (file, response) {
-            console.log(response);
+           data = JSON.parse(response);
+
+	if (data.success) {
+	  window.location.href = window.location.href + "view-file.php?" + $.param(data);
+	}
         });
 
         dropzone.options.acceptedFiles = 'application/pdf';
